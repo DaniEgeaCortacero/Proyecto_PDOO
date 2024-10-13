@@ -99,7 +99,7 @@ public class ObjetoClicker {
      */
     public void setExp(int exp) {
         if(exp >= 0){
-            this.exp = coinsClic;
+            this.exp = exp;
         } else {
             System.err.println("El parámetro <exp> es inferior a 0.");
             this.exp = 0;
@@ -162,7 +162,7 @@ public class ObjetoClicker {
     @Override
     public String toString() {
         return "coins= " + coins +
-                "coinsClic= " + coinsClic +
+                ", coinsClic= " + coinsClic +
                 ", exp= " + exp +
                 ", maxExp= " + maxExp +
                 ", pathImage= " + pathImage;
