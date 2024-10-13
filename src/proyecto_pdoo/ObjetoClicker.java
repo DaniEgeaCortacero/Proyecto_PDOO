@@ -5,33 +5,33 @@ package proyecto_pdoo;
  * @author forza
  */
 public class ObjetoClicker {
-    private int coinsClic, exp, maxExp, earnedExp;
+    private int coins, coinsClic, exp, maxExp;
     private String pathImage;
 
     /**
      * Constructor por defecto.
      */
     public ObjetoClicker(){
+        this.setCoins(0);
         this.setCoinsClic(10);
-        this.setExp(0);
+        this.setExp(10);
         this.setMaxExp(100000);
-        this.setEarnedExp(10);
         this.setPathImage("");
     }
     
     /**
      * Constructor por parámetros.
+     * @param coins int
      * @param coinsClic int
      * @param exp int
      * @param maxExp int
-     * @param earnedExp int
      * @param pathImage String
      */
-    public ObjetoClicker(int coinsClic, int exp, int maxExp, int earnedExp, String pathImage) {
+    public ObjetoClicker(int coins, int coinsClic, int exp, int maxExp,  String pathImage) {
+        this.setCoins(coins);
         this.setCoinsClic(coinsClic);
         this.setExp(exp);
         this.setMaxExp(maxExp);
-        this.setEarnedExp(earnedExp);
         this.setPathImage(pathImage);
     }
     
@@ -40,8 +40,28 @@ public class ObjetoClicker {
      * @param otro ObjetoClicker
      */
     public ObjetoClicker(ObjetoClicker otro){
-        this(otro.getCoinsClic(), otro.getExp(), otro.getMaxExp(),
-                otro.getEarnedExp(), otro.getPathImage());
+        this(otro.getCoins(), otro.getCoinsClic(), otro.getExp(), otro.getMaxExp(), otro.getPathImage());
+    }
+
+    /**
+     * Getter coins.
+     * @return int
+     */
+    public int getCoins() {
+        return coins;
+    }
+
+    /**
+     * Setter coins
+     * @param coins int
+     */
+    public void setCoins(int coins) {
+        if(coins >= 0){
+            this.coins = coins;
+        } else {
+            System.err.println("El parámetro coins no puede ser inferior a 0. Inicializando atributo a 0.");
+            this.coins = 0;
+        }
     }
 
     /**
@@ -105,26 +125,17 @@ public class ObjetoClicker {
             System.err.println("maxExp es menor que exp. Valor establecido a <exp>.");
             this.maxExp = this.exp;
         }
-    }  
-
-    /**
-     * Getter earnedExp
-     * @return int
-     */
-    public int getEarnedExp() {
-        return earnedExp;
     }
 
     /**
-     * Setter earnedExp
-     * @param earnedExp int 
+     * Método addExp.
+     * @param n_exp int
      */
-    public void setEarnedExp(int earnedExp) {
-        if(earnedExp > 0){
-            this.earnedExp = earnedExp;
+    public void addExp(int n_exp){
+        if(n_exp < this.maxExp){
+            this.setExp(n_exp);
         } else {
-            System.err.println("El atributo <earnedExp> es inferior a 0.");
-            this.earnedExp = 0;
+            this.setExp(this.maxExp);
         }
     }
 
@@ -153,10 +164,7 @@ public class ObjetoClicker {
         return "coinsClic= " + coinsClic +
                 ", exp= " + exp +
                 ", maxExp= " + maxExp +
-                ", earnedExp= " + earnedExp +
-                ", maxExp= " + maxExp +
                 ", pathImage= " + pathImage;
     }
-       
     
 }
