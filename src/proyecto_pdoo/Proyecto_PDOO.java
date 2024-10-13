@@ -12,6 +12,9 @@ public class Proyecto_PDOO {
     public static void main(String[] args) {
         ObjetoClicker objeto = new ObjetoClicker();
         System.out.println(objeto.toString());
+
+        objeto.addExp(1500);
+        System.out.println(objeto.toString());
     }
     
 }

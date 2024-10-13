@@ -161,7 +161,8 @@ public class ObjetoClicker {
      */
     @Override
     public String toString() {
-        return "coinsClic= " + coinsClic +
+        return "coins= " + coins +
+                "coinsClic= " + coinsClic +
                 ", exp= " + exp +
                 ", maxExp= " + maxExp +
                 ", pathImage= " + pathImage;
