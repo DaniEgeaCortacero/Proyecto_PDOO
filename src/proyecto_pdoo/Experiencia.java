@@ -6,25 +6,30 @@ package proyecto_pdoo;
  */
 public class Experiencia {
     private int nExp, maxExp, level;
+    private double expMultiplier;
     private String pathImage;
+
+    //----------------------------------- CONSTRUCTORES ---------------------------------------------//
 
     /**
      * Constructor por defecto.
      */
     public Experiencia(){
-        this(0, 999999, 0, "Null");
+        this(0, 999999, 1.2, 0, "Null");
     }
     
     /**
      * Constructor por parámetros.
      * @param nExp int
      * @param maxExp int
+     * @param expMultiplier double
      * @param level int
      * @param pathImage String
      */
-    public Experiencia(int nExp, int maxExp, int level, String pathImage) {
-        this.nExp = nExp;
-        this.maxExp = maxExp;
+    public Experiencia(int nExp, int maxExp, double expMultiplier, int level, String pathImage) {
+        this.setnExp(nExp);
+        this.setMaxExp(maxExp);
+        this.setExpMultiplier(expMultiplier);
         this.level = level;
         this.pathImage = pathImage;
     }
@@ -34,8 +39,12 @@ public class Experiencia {
      * @param other Experiencia
      */
     public Experiencia(Experiencia other){
-        this(other.nExp, other.maxExp, other.level, other.pathImage);
+        this(other.nExp, other.maxExp, other.expMultiplier, other.level, other.pathImage);
     }
+
+    //----------------------------------- EXPERIENCIA ---------------------------------------------//
+
+    //-------- nExp
 
     /**
      * Getter nExp
@@ -50,8 +59,30 @@ public class Experiencia {
      * @param nExp int 
      */
     public void setnExp(int nExp) {
-        this.nExp = nExp;
+        if(nExp >= 0){
+            this.nExp = nExp;
+        } else {
+            System.err.println("El parámetro <nExp> es inferior a 0.");
+            this.nExp = 0;
+        }
     }
+
+    /**
+     * Método addExp.
+     * Suma la experiencia actual con la del parámetro.
+     * @param n_exp int
+     */
+    public void addExp(int n_exp){
+        if(n_exp < this.maxExp){
+            this.nExp += n_exp;
+            this.reloadLevel();
+        } else {
+            this.nExp = this.maxExp;
+            this.reloadLevel();
+        }
+    }
+
+    //-------- maxExp
 
     /**
      * Getter maxExp
@@ -66,8 +97,38 @@ public class Experiencia {
      * @param maxExp int 
      */
     public void setMaxExp(int maxExp) {
-        this.maxExp = maxExp;
+        if(maxExp >= nExp){
+            this.maxExp = maxExp;
+        } else {
+            System.err.println("maxExp es menor que exp. Valor establecido a <exp>.");
+            this.maxExp = this.nExp;
+        }
     }
+
+    //-------- expMultiplier
+
+    /**
+     * Getter expMultiplier
+     * @return double
+     */
+    public double getExpMultiplier() {
+        return expMultiplier;
+    }
+
+    /**
+     * Setter expMultiplier
+     * @param expMultiplier double
+     */
+    public void setExpMultiplier(double expMultiplier) {
+        if(expMultiplier > 0){
+            this.expMultiplier = expMultiplier;
+        } else {
+            System.err.println("El parámetro <expMultiplier> es inferior o igual a 0. Establecido valor 1.2");
+            this.expMultiplier = 1.2;
+        }
+    }
+
+    //-------- level
 
     /**
      * Getter level
@@ -82,8 +143,24 @@ public class Experiencia {
      * @param level int 
      */
     public void setLevel(int level) {
-        this.level = level;
+        if(level >= 0){
+            this.level = level;
+        } else {
+            System.err.println("El parámetro <level> es inferior a 0.");
+            this.level = 0;
+        }
     }
+
+    public void reloadLevel(){
+        double expBase = 120;
+        if(level > 0 && nExp >= expBase*expMultiplier*(level+1)){
+            level++;
+        } else if(level == 0 && nExp >= expMultiplier*expBase){
+            level = 1;
+        }
+    }
+
+    //----------------------------------- IMAGEN ---------------------------------------------//
 
     /**
      * Getter pathImage
@@ -100,6 +177,8 @@ public class Experiencia {
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
     }
+
+    //----------------------------------- OTROS ---------------------------------------------//
 
     /**
      * toString()

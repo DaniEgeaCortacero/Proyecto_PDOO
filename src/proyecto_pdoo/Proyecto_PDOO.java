@@ -13,7 +13,14 @@ public class Proyecto_PDOO {
         ObjetoClicker objeto = new ObjetoClicker();
         System.out.println(objeto.toString());
 
-        objeto.addExp(1500);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(100);
         System.out.println(objeto.toString());
     }
     
