@@ -15,12 +15,7 @@ public class Proyecto_PDOO {
 
         objeto.getExp().addExp(100);
         objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
+        objeto.getExp().addExp(10000);
         System.out.println(objeto.toString());
     }
     

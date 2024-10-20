@@ -15,7 +15,7 @@ public class Experiencia {
      * Constructor por defecto.
      */
     public Experiencia(){
-        this(0, 999999, 1.2, 0, "Null");
+        this(0, 999999, 1.6, 0, "Null");
     }
     
     /**
@@ -153,10 +153,9 @@ public class Experiencia {
 
     public void reloadLevel(){
         double expBase = 120;
-        if(level > 0 && nExp >= expBase*expMultiplier*(level+1)){
+
+        while (nExp >= expBase * expMultiplier * (level + 1)) {
             level++;
-        } else if(level == 0 && nExp >= expMultiplier*expBase){
-            level = 1;
         }
     }
 
