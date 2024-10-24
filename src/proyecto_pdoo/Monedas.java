@@ -63,6 +63,15 @@ public class Monedas {
             this.coins = 0;
         }
     }
+    
+    /**
+     * addCoins
+     * Añade o quita monedas del total según el parámetro.
+     * @param coins int
+     */
+    public void addCoins(int coins){
+        this.coins += coins;
+    }
 
     //-------- coinsClick
 
@@ -84,6 +93,17 @@ public class Monedas {
         } else {
             System.err.println("El parámetro <coinsClic> es inferior a 0.");
             this.coinsClick = 0;
+        }
+    }
+    
+    /**
+     * addCoinsClick
+     * Suma las monedas por clic actuales con el parámetro.
+     * @param coinsClick 
+     */
+    public void addCoinsClick(int coinsClick){
+        if(coinsClick >= 0){
+            this.coinsClick += coinsClick;
         }
     }
 
