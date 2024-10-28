@@ -27,7 +27,7 @@ public class ObjetoClicker {
      * @param pathImage String
      * @param exp Experiencia
      * @param monedas Monedas
-     * @param mejoras Mejoras
+     * @param mejoras List<Mejoras>
      */
     public ObjetoClicker(String pathImage, Experiencia exp, Monedas monedas, List<Mejoras> mejoras) {
         this.pathImage = pathImage;
