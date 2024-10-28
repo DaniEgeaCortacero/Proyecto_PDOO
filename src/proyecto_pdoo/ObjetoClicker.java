@@ -118,6 +118,9 @@ public class ObjetoClicker {
         this.pathImage = pathImage;
     }
 
+
+    //----------------------------------- OTROS ---------------------------------------------//
+
     /**
      * Método toString()
      * @return String

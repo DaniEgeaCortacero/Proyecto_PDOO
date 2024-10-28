@@ -32,6 +32,7 @@ public class Mejoras {
         this.description = description;
         this.pathImage = pathImage;
         this.prize = prize;
+        this.obj = obj;
     }
 
     /**
