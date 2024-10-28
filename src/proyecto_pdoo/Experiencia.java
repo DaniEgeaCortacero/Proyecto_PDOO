@@ -2,7 +2,7 @@ package proyecto_pdoo;
 
 /**
  *
- * @author forza
+ * @author Dani
  */
 public class Experiencia {
     private int nExp, maxExp, level;

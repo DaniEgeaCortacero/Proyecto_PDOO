@@ -2,7 +2,7 @@ package proyecto_pdoo;
 
 /**
  *
- * @author forza
+ * @author Dani
  */
 public class Monedas {
     private int coins, coinsClick, maxCoins;

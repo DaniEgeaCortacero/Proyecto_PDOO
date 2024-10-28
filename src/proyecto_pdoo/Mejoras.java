@@ -2,7 +2,7 @@ package proyecto_pdoo;
 
 /**
  *
- * @author forza
+ * @author Dani
  */
 public class Mejoras {
     private String name, description, pathImage;
@@ -115,7 +115,6 @@ public class Mejoras {
         this.prize = prize;
     }
 
-
     //----------------------------------- Otros ---------------------------------------------//
 
     /**
@@ -125,8 +124,8 @@ public class Mejoras {
     @Override
     public String toString() {
         return  "Name=" + name +
-                ", description='" + description +
-                ", pathImage='" + pathImage +
-                ", prize=" + prize;
+                ", description= " + description +
+                ", pathImage= " + pathImage +
+                ", prize= " + prize;
     }
 }
