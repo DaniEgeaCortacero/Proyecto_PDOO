@@ -5,9 +5,9 @@ package proyecto_pdoo;
  * @author Dani
  */
 public class Mejoras {
-    private String name, description, pathImage;
-    private int prize;
-    private ObjetoClicker obj;
+    protected String name, description, pathImage;
+    protected int prize;
+    protected ObjetoClicker obj;
 
 
     //----------------------------------- CONSTRUCTORES ---------------------------------------------//
@@ -136,6 +136,19 @@ public class Mejoras {
         this.obj = obj;
     }
     
+    
+    //----------------------------------- Funciones ---------------------------------------------//
+    
+    //------ Comprar mejora
+    
+    /**
+     * buyUpgrade()
+     * Este método resta el precio de la mejora al total.
+     */
+    protected void buyUpgrade(int prize){
+        this.obj.getMonedas().addCoins(-prize);
+    }
+    
 
     //----------------------------------- Otros ---------------------------------------------//
 
@@ -150,4 +163,5 @@ public class Mejoras {
                 ", pathImage= " + pathImage +
                 ", prize= " + prize;
     }
+    
 }

@@ -65,7 +65,8 @@ public class Mejoras_monedas extends Mejoras{
      * Añade o quita monedas del total según el parámetro.
      */
     public void addCoins(){
-        super.getObj().getMonedas().addCoins(this.increaseCoins);
+        super.obj.getMonedas().addCoins(this.increaseCoins);
+        super.buyUpgrade(this.prize);
     }
 
 
@@ -76,7 +77,8 @@ public class Mejoras_monedas extends Mejoras{
      * Suma las monedas por clic actuales con el parámetro.
      */
     public void addCoinsClick(){
-        super.getObj().getMonedas().addCoinsClick(this.increaseCoins);
+        super.obj.getMonedas().addCoinsClick(this.increaseCoins);
+        super.buyUpgrade(this.prize);
     }
 
 

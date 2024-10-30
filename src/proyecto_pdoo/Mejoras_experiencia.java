@@ -65,6 +65,7 @@ public class Mejoras_experiencia extends Mejoras{
      */
     public void addExp(){
         super.getObj().getExp().addExp(this.increaseExp);
+        super.buyUpgrade(this.prize);
     }
 
 

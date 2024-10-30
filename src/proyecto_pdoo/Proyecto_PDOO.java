@@ -23,11 +23,11 @@ public class Proyecto_PDOO {
         System.out.println(objeto.toString());
          */
 
-        Monedas monedas = new Monedas();
+        Monedas monedas = new Monedas(20, 10, 999999, "Null");
         Experiencia experiencia = new Experiencia();
         List<Mejoras> upgrades = new ArrayList<>();
         ObjetoClicker objeto = new ObjetoClicker("Null", experiencia, monedas, upgrades);
-        Mejoras_monedas upgrade_1 = new Mejoras_monedas("Mejora 1", "Añade dineros", "", 0, objeto, 1500);
+        Mejoras_monedas upgrade_1 = new Mejoras_monedas("Mejora 1", "Añade dineros", "", 10, objeto, 1500);
         Mejoras_experiencia upgrade_2 = new Mejoras_experiencia("Mejora 1", "Añade dineros", "", 0, objeto, 200);
 
         upgrades.add(upgrade_1);
