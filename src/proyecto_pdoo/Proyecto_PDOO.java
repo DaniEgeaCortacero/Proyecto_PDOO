@@ -28,7 +28,7 @@ public class Proyecto_PDOO {
         List<Mejoras> upgrades = new ArrayList<>();
         ObjetoClicker objeto = new ObjetoClicker("Null", experiencia, monedas, upgrades);
         Mejoras_monedas upgrade_1 = new Mejoras_monedas("Mejora 1", "Añade dineros", "", 10, objeto, 1500);
-        Mejoras_experiencia upgrade_2 = new Mejoras_experiencia("Mejora 1", "Añade dineros", "", 0, objeto, 200);
+        Mejoras_experiencia upgrade_2 = new Mejoras_experiencia("Mejora 2", "Añade experiencia", "", 10, objeto, 200);
 
         upgrades.add(upgrade_1);
         upgrades.add(upgrade_2);
