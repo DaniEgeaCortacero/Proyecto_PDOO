@@ -1,20 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyecto_pdoo;
+
+import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
  * @author forza
  */
 public class Vista extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Vista
      */
     public Vista() {
         initComponents();
+        setImageLabel("");
     }
 
     /**
@@ -26,22 +28,102 @@ public class Vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel_Generic = new javax.swing.JPanel();
+        panel_Data = new javax.swing.JPanel();
+        panel_Upgrades = new javax.swing.JPanel();
+        panel_Game = new javax.swing.JPanel();
+        panel_Clicker = new javax.swing.JPanel();
+        label_Fondo_Clicker = new javax.swing.JLabel();
+        panel_Inventory = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        panel_Generic.setLayout(new java.awt.BorderLayout());
+
+        panel_Data.setBackground(new java.awt.Color(255, 230, 190));
+
+        javax.swing.GroupLayout panel_DataLayout = new javax.swing.GroupLayout(panel_Data);
+        panel_Data.setLayout(panel_DataLayout);
+        panel_DataLayout.setHorizontalGroup(
+            panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1016, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panel_DataLayout.setVerticalGroup(
+            panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        panel_Generic.add(panel_Data, java.awt.BorderLayout.PAGE_START);
+
+        panel_Upgrades.setBackground(new java.awt.Color(51, 204, 255));
+
+        javax.swing.GroupLayout panel_UpgradesLayout = new javax.swing.GroupLayout(panel_Upgrades);
+        panel_Upgrades.setLayout(panel_UpgradesLayout);
+        panel_UpgradesLayout.setHorizontalGroup(
+            panel_UpgradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1016, Short.MAX_VALUE)
+        );
+        panel_UpgradesLayout.setVerticalGroup(
+            panel_UpgradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        panel_Generic.add(panel_Upgrades, java.awt.BorderLayout.PAGE_END);
+
+        panel_Game.setBackground(new java.awt.Color(255, 255, 255));
+        panel_Game.setLayout(new javax.swing.BoxLayout(panel_Game, javax.swing.BoxLayout.LINE_AXIS));
+
+        panel_Clicker.setBackground(new java.awt.Color(204, 255, 204));
+        panel_Clicker.setMaximumSize(new java.awt.Dimension(900, 32767));
+        panel_Clicker.setPreferredSize(new java.awt.Dimension(400, 405));
+
+        label_Fondo_Clicker.setMaximumSize(new java.awt.Dimension(888888, 8888888));
+        label_Fondo_Clicker.setMinimumSize(new java.awt.Dimension(10, 16));
+
+        javax.swing.GroupLayout panel_ClickerLayout = new javax.swing.GroupLayout(panel_Clicker);
+        panel_Clicker.setLayout(panel_ClickerLayout);
+        panel_ClickerLayout.setHorizontalGroup(
+            panel_ClickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ClickerLayout.createSequentialGroup()
+                .addGap(271, 271, 271)
+                .addComponent(label_Fondo_Clicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(346, Short.MAX_VALUE))
+        );
+        panel_ClickerLayout.setVerticalGroup(
+            panel_ClickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ClickerLayout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(label_Fondo_Clicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+
+        panel_Game.add(panel_Clicker);
+
+        panel_Inventory.setBackground(new java.awt.Color(255, 255, 255));
+        panel_Inventory.setMaximumSize(new java.awt.Dimension(400, 32767));
+
+        javax.swing.GroupLayout panel_InventoryLayout = new javax.swing.GroupLayout(panel_Inventory);
+        panel_Inventory.setLayout(panel_InventoryLayout);
+        panel_InventoryLayout.setHorizontalGroup(
+            panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+        panel_InventoryLayout.setVerticalGroup(
+            panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 471, Short.MAX_VALUE)
+        );
+
+        panel_Game.add(panel_Inventory);
+
+        panel_Generic.add(panel_Game, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(panel_Generic, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -76,7 +158,28 @@ public class Vista extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel label_Fondo_Clicker;
+    private javax.swing.JPanel panel_Clicker;
+    private javax.swing.JPanel panel_Data;
+    private javax.swing.JPanel panel_Game;
+    private javax.swing.JPanel panel_Generic;
+    private javax.swing.JPanel panel_Inventory;
+    private javax.swing.JPanel panel_Upgrades;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Este método redimensiona la imagen de un label al panel
+     * @param label_Fondo_Clicker
+     * @param path 
+     */
+    private void setImageLabel(String path) {
+        ImageIcon img = new ImageIcon(path);
+        Icon icon = new ImageIcon(img.getImage().getScaledInstance(label_Fondo_Clicker.getWidth(), label_Fondo_Clicker.getHeight(), Image.SCALE_DEFAULT));
+        label_Fondo_Clicker.setIcon(icon);
+        this.repaint();
+    }
 }
