@@ -173,7 +173,6 @@ public class Vista extends javax.swing.JFrame {
 
     /**
      * Este método redimensiona la imagen de un label al panel
-     * @param label_Fondo_Clicker
      * @param path 
      */
     private void setImageLabel(String path) {

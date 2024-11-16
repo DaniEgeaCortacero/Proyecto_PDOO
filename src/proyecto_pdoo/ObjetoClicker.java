@@ -117,8 +117,18 @@ public class ObjetoClicker {
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
     }
+    
+    //----------------------------------- FUNCIONES ---------------------------------------------//
 
-
+    /**
+     * Método doClick()
+     * Llama a los métodos doClickExp()y doClickCoins().
+     */
+    public void doClick(){
+        this.exp.doClickExp();
+        this.monedas.doClickCoins();
+    }
+    
     //----------------------------------- OTROS ---------------------------------------------//
 
     /**

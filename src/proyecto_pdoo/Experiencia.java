@@ -6,6 +6,7 @@ package proyecto_pdoo;
  */
 public class Experiencia {
     private int nExp, maxExp, level;
+    private int nExpClick;
     private double expMultiplier;
     private String pathImage;
 
@@ -15,19 +16,21 @@ public class Experiencia {
      * Constructor por defecto.
      */
     public Experiencia(){
-        this(0, 999999, 1.6, 0, "Null");
+        this(0, 10, 999999, 1.6, 0, "Null");
     }
     
     /**
      * Constructor por parámetros.
      * @param nExp int
+     * @param nExpClick int
      * @param maxExp int
      * @param expMultiplier double
      * @param level int
      * @param pathImage String
      */
-    public Experiencia(int nExp, int maxExp, double expMultiplier, int level, String pathImage) {
+    public Experiencia(int nExp, int nExpClick, int maxExp, double expMultiplier, int level, String pathImage) {
         this.setnExp(nExp);
+        this.setnExpClick(nExpClick);
         this.setMaxExp(maxExp);
         this.setExpMultiplier(expMultiplier);
         this.level = level;
@@ -39,10 +42,10 @@ public class Experiencia {
      * @param other Experiencia
      */
     public Experiencia(Experiencia other){
-        this(other.nExp, other.maxExp, other.expMultiplier, other.level, other.pathImage);
+        this(other.nExp, other.nExpClick, other.maxExp, other.expMultiplier, other.level, other.pathImage);
     }
 
-    //----------------------------------- EXPERIENCIA ---------------------------------------------//
+    //----------------------------------- GETTERS Y SETTERS ---------------------------------------------//
 
     //-------- nExp
 
@@ -66,19 +69,28 @@ public class Experiencia {
             this.nExp = 0;
         }
     }
+    
+    
+    //-------- nExpClick
 
     /**
-     * Método addExp.
-     * Suma la experiencia actual con la del parámetro.
-     * @param n_exp int
+     * Getter nExpClick
+     * @return int
      */
-    public void addExp(int n_exp){
-        if(n_exp < this.maxExp){
-            this.nExp += n_exp;
-            this.reloadLevel();
+    public int getnExpClick() {
+        return nExpClick;
+    }
+
+    /**
+     * Setter nExpClick
+     * @param nExpClick int 
+     */
+    public void setnExpClick(int nExpClick) {
+        if(nExpClick < this.maxExp){
+            this.nExpClick = nExpClick;
         } else {
-            this.nExp = this.maxExp;
-            this.reloadLevel();
+            this.nExpClick = 10;
+            System.err.println("Restaurado nExpClic a valor 10 debido a exceso.");
         }
     }
 
@@ -176,6 +188,36 @@ public class Experiencia {
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
     }
+    
+    //----------------------------------- FUNCIONES ---------------------------------------------//
+    
+    //-------- Al hacer clic
+    
+    /**
+     * Método doClicExp
+     * Añade experiencia al hacer click sobre el objetoClicker.
+     */
+    public void doClickExp(){
+        this.nExp += this.nExpClick;
+    }
+    
+    //-------- Añadir exp por clic
+    
+    /**
+     * Método addNExpClic.
+     * Suma la experiencia por clic actual con la del parámetro.
+     * @param n_exp int
+     */
+    public void addNExpClic(int n_exp){
+        if(n_exp+nExpClick < this.maxExp){
+            this.nExpClick += n_exp;
+            this.reloadLevel();
+        } else {
+            this.nExpClick = this.maxExp;
+            this.reloadLevel();
+        }
+    }
+    
 
     //----------------------------------- OTROS ---------------------------------------------//
 
@@ -186,6 +228,7 @@ public class Experiencia {
     @Override
     public String toString() {
         return "nExp= " + nExp +
+                ", nExpClic= " + nExpClick +
                 ", maxExp= " + maxExp +
                 ", level= " + level +
                 ", pathImage= " + pathImage;

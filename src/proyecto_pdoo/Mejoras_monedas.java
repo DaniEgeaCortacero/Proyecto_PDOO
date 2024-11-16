@@ -38,6 +38,8 @@ public class Mejoras_monedas extends Mejoras{
 
     //----------------------------------- Getter y setters ---------------------------------------------//
 
+    //-------- increaseCoins
+    
     /**
      * Getter increaseCoins
      * @return int
@@ -53,6 +55,98 @@ public class Mejoras_monedas extends Mejoras{
     public void setIncreaseCoins(int increaseCoins) {
         this.increaseCoins = increaseCoins;
     }
+    
+    //-------- name
+
+    /**
+     * Getter name
+     * @return String
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setter name
+     * @param name String
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //-------- description
+
+    /**
+     * Getter description
+     * @return String
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Setter description
+     * @param description String
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    //-------- pathImage
+
+    /**
+     * Getter pathImage
+     * @return String
+     */
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    /**
+     * Setter pathImage
+     * @param pathImage String
+     */
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
+    }
+
+    //-------- prize
+
+    /**
+     * Getter prize
+     * @return int
+     */
+    public int getPrize() {
+        return prize;
+    }
+
+    /**
+     * Setter prize
+     * @param prize int
+     */
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+    
+    //-------- ObjetoClicker
+
+    /**
+     * Getter obj
+     * @return ObjetoClicker
+     */
+    public ObjetoClicker getObj() {
+        return obj;
+    }
+
+    /**
+     * Setter obj
+     * @param obj ObjetoClicker 
+     */
+    public void setObj(ObjetoClicker obj) {
+        this.obj = obj;
+    }
+    
+    
 
 
     //----------------------------------- FUNCIONES ---------------------------------------------//
@@ -65,7 +159,7 @@ public class Mejoras_monedas extends Mejoras{
      * Añade o quita monedas del total según el parámetro.
      */
     public void addCoins(){
-        super.obj.getMonedas().addCoins(this.increaseCoins);
+        this.getObj().getMonedas().addCoins(this.increaseCoins);
         super.buyUpgrade(this.prize);
     }
 

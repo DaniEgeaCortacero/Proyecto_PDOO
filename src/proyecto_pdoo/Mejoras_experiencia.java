@@ -54,6 +54,98 @@ public class Mejoras_experiencia extends Mejoras{
         this.increaseExp = increaseExp;
     }
 
+    //-------- name
+
+    /**
+     * Getter name
+     * @return String
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setter name
+     * @param name String
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //-------- description
+
+    /**
+     * Getter description
+     * @return String
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Setter description
+     * @param description String
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    //-------- pathImage
+
+    /**
+     * Getter pathImage
+     * @return String
+     */
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    /**
+     * Setter pathImage
+     * @param pathImage String
+     */
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
+    }
+
+    //-------- prize
+
+    /**
+     * Getter prize
+     * @return int
+     */
+    public int getPrize() {
+        return prize;
+    }
+
+    /**
+     * Setter prize
+     * @param prize int
+     */
+    public void setPrize(int prize) {
+        this.prize = prize;
+    }
+    
+    //-------- ObjetoClicker
+
+    /**
+     * Getter obj
+     * @return ObjetoClicker
+     */
+    public ObjetoClicker getObj() {
+        return obj;
+    }
+
+    /**
+     * Setter obj
+     * @param obj ObjetoClicker 
+     */
+    public void setObj(ObjetoClicker obj) {
+        this.obj = obj;
+    }
+    
+    
+
 
     //----------------------------------- FUNCIONES ---------------------------------------------//
 
@@ -61,10 +153,10 @@ public class Mejoras_experiencia extends Mejoras{
 
     /**
      * Método addExp.
-     * Suma la experiencia actual con la del parámetro.
+     * Suma la experiencia por clic actual con la del parámetro.
      */
-    public void addExp(){
-        super.getObj().getExp().addExp(this.increaseExp);
+    public void addExpPerClic(){
+        this.getObj().getExp().addNExpClic(this.increaseExp);
         super.buyUpgrade(this.prize);
     }
 

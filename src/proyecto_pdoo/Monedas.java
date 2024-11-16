@@ -39,7 +39,7 @@ public class Monedas {
         this(other.coins, other.coinsClick, other.maxCoins, other.pathImage);
     }
 
-    //----------------------------------- ECONOMIA ---------------------------------------------//
+    //----------------------------------- GETTERS Y SETTERS ---------------------------------------------//
 
     //-------- coins
 
@@ -62,15 +62,6 @@ public class Monedas {
             System.err.println("El parámetro coins no puede ser inferior a 0. Inicializando atributo a 0.");
             this.coins = 0;
         }
-    }
-    
-    /**
-     * addCoins
-     * Añade o quita monedas del total según el parámetro.
-     * @param coins int
-     */
-    public void addCoins(int coins){
-        this.coins += coins;
     }
 
     //-------- coinsClick
@@ -96,16 +87,7 @@ public class Monedas {
         }
     }
     
-    /**
-     * addCoinsClick
-     * Suma las monedas por clic actuales con el parámetro.
-     * @param coinsClick 
-     */
-    public void addCoinsClick(int coinsClick){
-        if(coinsClick >= 0){
-            this.coinsClick += coinsClick;
-        }
-    }
+    
 
     //-------- maxCoins
 
@@ -141,6 +123,42 @@ public class Monedas {
      */
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
+    }
+    
+    //----------------------------------- IMAGEN ---------------------------------------------//
+    
+    //-------- Al hacer clic
+    
+    /**
+     * Método doClickCoins
+     * Añade monedas al total por hacer clic al objetoClicker.
+     */
+    public void doClickCoins(){
+        this.coins += this.coinsClick;
+    }
+    
+    //-------- Añadir monedas al total
+    
+    /**
+     * addCoins
+     * Añade o quita monedas del total según el parámetro.
+     * @param coins int
+     */
+    public void addCoins(int coins){
+        this.coins += coins;
+    }
+    
+    //-------- Añadir monedas por clic
+    
+    /**
+     * addCoinsClick
+     * Suma las monedas por clic actuales con el parámetro.
+     * @param coinsClick 
+     */
+    public void addCoinsClick(int coinsClick){
+        if(coinsClick >= 0){
+            this.coinsClick += coinsClick;
+        }
     }
 
     //----------------------------------- OTROS ---------------------------------------------//

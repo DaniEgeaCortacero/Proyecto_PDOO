@@ -13,15 +13,6 @@ public class Proyecto_PDOO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*
-        ObjetoClicker objeto = new ObjetoClicker();
-        System.out.println(objeto.toString());
-
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(100);
-        objeto.getExp().addExp(10000);
-        System.out.println(objeto.toString());
-         */
 
         Monedas monedas = new Monedas(20, 10, 999999, "Null");
         Experiencia experiencia = new Experiencia();
@@ -29,9 +20,11 @@ public class Proyecto_PDOO {
         ObjetoClicker objeto = new ObjetoClicker("Null", experiencia, monedas, upgrades);
         Mejoras_monedas upgrade_1 = new Mejoras_monedas("Mejora 1", "Añade dineros", "", 10, objeto, 1500);
         Mejoras_experiencia upgrade_2 = new Mejoras_experiencia("Mejora 2", "Añade experiencia", "", 10, objeto, 200);
+        Mejoras_tiempo upgrade_3 = new Mejoras_tiempo(1, "Mejora 3", "Hace clics en 1 seg", "", 0, objeto);
 
         upgrades.add(upgrade_1);
         upgrades.add(upgrade_2);
+        upgrades.add(upgrade_3);
 
 
         System.out.println(objeto);
@@ -42,7 +35,11 @@ public class Proyecto_PDOO {
         mo.addCoins();
 
         Mejoras_experiencia ex = (Mejoras_experiencia) upgrades.get(1);
-        ex.addExp();
+        ex.addExpPerClic();
+        
+        Mejoras_tiempo tm = (Mejoras_tiempo) upgrades.get(2);
+        tm.autoClicks();
+        
 
         System.out.println(objeto);
 
