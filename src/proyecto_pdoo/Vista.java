@@ -1,6 +1,12 @@
 package proyecto_pdoo;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -11,12 +17,24 @@ import javax.swing.JLabel;
  */
 public class Vista extends javax.swing.JFrame {
     
+    private ObjetoClicker obj;
+    
     /**
      * Creates new form Vista
      */
     public Vista() {
         initComponents();
-        setImageLabel("");
+        setButtonClicker();
+        Monedas monedas = new Monedas();
+        Experiencia experiencia = new Experiencia();
+        List<Mejoras> upgrades = new ArrayList<>();
+        obj = new ObjetoClicker("Null", experiencia, monedas, upgrades);
+        
+        label_minExp.setText(obj.getExp().getExpLevel()+"");
+        label_maxExp.setText(obj.getExp().getExpNextLevel()+"");
+        label_level.setText(obj.getExp().getLevel()+"");
+        progress.setMinimum(obj.getExp().getExpLevel());
+        progress.setMaximum(obj.getExp().getExpNextLevel());
     }
 
     /**
@@ -30,10 +48,18 @@ public class Vista extends javax.swing.JFrame {
 
         panel_Generic = new javax.swing.JPanel();
         panel_Data = new javax.swing.JPanel();
+        panel_Data_left = new javax.swing.JPanel();
+        label_coins = new javax.swing.JLabel();
+        panel_Data_mid = new javax.swing.JPanel();
+        label_minExp = new javax.swing.JLabel();
+        progress = new javax.swing.JProgressBar();
+        label_maxExp = new javax.swing.JLabel();
+        label_level = new javax.swing.JLabel();
+        panel_Data_right = new javax.swing.JPanel();
         panel_Upgrades = new javax.swing.JPanel();
         panel_Game = new javax.swing.JPanel();
         panel_Clicker = new javax.swing.JPanel();
-        label_Fondo_Clicker = new javax.swing.JLabel();
+        button_Clicker = new javax.swing.JButton();
         panel_Inventory = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,17 +67,89 @@ public class Vista extends javax.swing.JFrame {
         panel_Generic.setLayout(new java.awt.BorderLayout());
 
         panel_Data.setBackground(new java.awt.Color(255, 230, 190));
+        panel_Data.setLayout(new java.awt.GridLayout(1, 3));
 
-        javax.swing.GroupLayout panel_DataLayout = new javax.swing.GroupLayout(panel_Data);
-        panel_Data.setLayout(panel_DataLayout);
-        panel_DataLayout.setHorizontalGroup(
-            panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1016, Short.MAX_VALUE)
+        panel_Data_left.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout panel_Data_leftLayout = new javax.swing.GroupLayout(panel_Data_left);
+        panel_Data_left.setLayout(panel_Data_leftLayout);
+        panel_Data_leftLayout.setHorizontalGroup(
+            panel_Data_leftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_Data_leftLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(label_coins)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
-        panel_DataLayout.setVerticalGroup(
-            panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        panel_Data_leftLayout.setVerticalGroup(
+            panel_Data_leftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_Data_leftLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(label_coins)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
+
+        panel_Data.add(panel_Data_left);
+
+        panel_Data_mid.setBackground(new java.awt.Color(255, 255, 255));
+
+        label_minExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        label_minExp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_minExp.setText("0");
+
+        label_maxExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        label_maxExp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_maxExp.setText("120");
+
+        label_level.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        label_level.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_level.setText("0");
+        label_level.setToolTipText("");
+
+        javax.swing.GroupLayout panel_Data_midLayout = new javax.swing.GroupLayout(panel_Data_mid);
+        panel_Data_mid.setLayout(panel_Data_midLayout);
+        panel_Data_midLayout.setHorizontalGroup(
+            panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_Data_midLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_Data_midLayout.createSequentialGroup()
+                        .addComponent(label_minExp, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(progress, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_maxExp, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Data_midLayout.createSequentialGroup()
+                        .addComponent(label_level, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        panel_Data_midLayout.setVerticalGroup(
+            panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Data_midLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(label_level)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(progress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label_minExp, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(label_maxExp, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
+        );
+
+        panel_Data.add(panel_Data_mid);
+
+        javax.swing.GroupLayout panel_Data_rightLayout = new javax.swing.GroupLayout(panel_Data_right);
+        panel_Data_right.setLayout(panel_Data_rightLayout);
+        panel_Data_rightLayout.setHorizontalGroup(
+            panel_Data_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 338, Short.MAX_VALUE)
+        );
+        panel_Data_rightLayout.setVerticalGroup(
+            panel_Data_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 122, Short.MAX_VALUE)
+        );
+
+        panel_Data.add(panel_Data_right);
 
         panel_Generic.add(panel_Data, java.awt.BorderLayout.PAGE_START);
 
@@ -76,26 +174,39 @@ public class Vista extends javax.swing.JFrame {
         panel_Clicker.setBackground(new java.awt.Color(204, 255, 204));
         panel_Clicker.setMaximumSize(new java.awt.Dimension(900, 32767));
         panel_Clicker.setPreferredSize(new java.awt.Dimension(400, 405));
+        panel_Clicker.setLayout(new java.awt.GridBagLayout());
 
-        label_Fondo_Clicker.setMaximumSize(new java.awt.Dimension(888888, 8888888));
-        label_Fondo_Clicker.setMinimumSize(new java.awt.Dimension(10, 16));
+        button_Clicker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/ButtonClicker.png"))); // NOI18N
+        button_Clicker.setBorderPainted(false);
+        button_Clicker.setContentAreaFilled(false);
+        button_Clicker.setMaximumSize(new java.awt.Dimension(1000, 1000));
+        button_Clicker.setMinimumSize(new java.awt.Dimension(200, 200));
+        button_Clicker.setPreferredSize(new java.awt.Dimension(400, 400));
+        button_Clicker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ClickerActionPerformed(evt);
+            }
+        });
+        panel_Clicker.add(button_Clicker, new java.awt.GridBagConstraints());
+        button_Clicker.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e) {
+                ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/ButtonClicker2.png"));
+                int ancho = button_Clicker.getWidth();
+                int alto = button_Clicker.getHeight();
+                ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+                button_Clicker.setIcon(icono);
+            }
 
-        javax.swing.GroupLayout panel_ClickerLayout = new javax.swing.GroupLayout(panel_Clicker);
-        panel_Clicker.setLayout(panel_ClickerLayout);
-        panel_ClickerLayout.setHorizontalGroup(
-            panel_ClickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ClickerLayout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addComponent(label_Fondo_Clicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(346, Short.MAX_VALUE))
-        );
-        panel_ClickerLayout.setVerticalGroup(
-            panel_ClickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_ClickerLayout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addComponent(label_Fondo_Clicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(284, Short.MAX_VALUE))
-        );
+            @Override
+            public void mouseReleased(java.awt.event.MouseEvent e) {
+                ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/ButtonClicker.png"));
+                int ancho = button_Clicker.getWidth();
+                int alto = button_Clicker.getHeight();
+                ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+                button_Clicker.setIcon(icono);
+            }
+        });
 
         panel_Game.add(panel_Clicker);
 
@@ -110,7 +221,7 @@ public class Vista extends javax.swing.JFrame {
         );
         panel_InventoryLayout.setVerticalGroup(
             panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGap(0, 535, Short.MAX_VALUE)
         );
 
         panel_Game.add(panel_Inventory);
@@ -122,7 +233,20 @@ public class Vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void button_ClickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ClickerActionPerformed
+       
+        obj.doClick();
+        
+        label_minExp.setText(""+obj.getExp().getExpLevel());
+        label_maxExp.setText(""+obj.getExp().getExpNextLevel());
+        label_level.setText(""+obj.getExp().getLevel());
+        progress.setMinimum(obj.getExp().getExpLevel());
+        progress.setMaximum(obj.getExp().getExpNextLevel());
+        progress.setValue(obj.getExp().getnExp());
+        
+        
+    }//GEN-LAST:event_button_ClickerActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -162,23 +286,37 @@ public class Vista extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel label_Fondo_Clicker;
+    private javax.swing.JButton button_Clicker;
+    private javax.swing.JLabel label_coins;
+    private javax.swing.JLabel label_level;
+    private javax.swing.JLabel label_maxExp;
+    private javax.swing.JLabel label_minExp;
     private javax.swing.JPanel panel_Clicker;
     private javax.swing.JPanel panel_Data;
+    private javax.swing.JPanel panel_Data_left;
+    private javax.swing.JPanel panel_Data_mid;
+    private javax.swing.JPanel panel_Data_right;
     private javax.swing.JPanel panel_Game;
     private javax.swing.JPanel panel_Generic;
     private javax.swing.JPanel panel_Inventory;
     private javax.swing.JPanel panel_Upgrades;
+    private javax.swing.JProgressBar progress;
     // End of variables declaration//GEN-END:variables
 
+    
+    
     /**
-     * Este método redimensiona la imagen de un label al panel
-     * @param path 
+     * Este método redimensiona la imagen del botón clicker.
      */
-    private void setImageLabel(String path) {
-        ImageIcon img = new ImageIcon(path);
-        Icon icon = new ImageIcon(img.getImage().getScaledInstance(label_Fondo_Clicker.getWidth(), label_Fondo_Clicker.getHeight(), Image.SCALE_DEFAULT));
-        label_Fondo_Clicker.setIcon(icon);
-        this.repaint();
+    private void setButtonClicker(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/ButtonClicker.png"));
+        int ancho = button_Clicker.getWidth();
+        int alto = button_Clicker.getHeight();
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        button_Clicker.setIcon(icono);
     }
+    
+    
 }
