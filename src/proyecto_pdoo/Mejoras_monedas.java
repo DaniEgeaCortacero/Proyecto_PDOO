@@ -160,7 +160,7 @@ public class Mejoras_monedas extends Mejoras{
      */
     public void addCoins(){
         this.getObj().getMonedas().addCoins(this.increaseCoins);
-        super.buyUpgrade(this.prize);
+        super.buyUpgrade();
     }
 
 
@@ -172,7 +172,7 @@ public class Mejoras_monedas extends Mejoras{
      */
     public void addCoinsClick(){
         super.obj.getMonedas().addCoinsClick(this.increaseCoins);
-        super.buyUpgrade(this.prize);
+        super.buyUpgrade();
     }
 
 

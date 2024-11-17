@@ -145,8 +145,9 @@ public class Mejoras {
      * buyUpgrade()
      * Este método resta el precio de la mejora al total.
      */
-    protected void buyUpgrade(int prize){
+    public void buyUpgrade(){
         this.obj.getMonedas().addCoins(-prize);
+        this.obj.getMejoras().add(this);
     }
     
 

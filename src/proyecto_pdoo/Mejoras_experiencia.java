@@ -157,7 +157,7 @@ public class Mejoras_experiencia extends Mejoras{
      */
     public void addExpPerClic(){
         this.getObj().getExp().addNExpClic(this.increaseExp);
-        super.buyUpgrade(this.prize);
+        super.buyUpgrade();
     }
 
 

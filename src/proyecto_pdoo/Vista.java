@@ -24,17 +24,35 @@ public class Vista extends javax.swing.JFrame {
      */
     public Vista() {
         initComponents();
+        
         setButtonClicker();
+        setjLabelCoins();
+        setjLabelExp();
+        setjLabelExpClick();
+        setjLabelCoinsClick();
+                
+        
         Monedas monedas = new Monedas();
         Experiencia experiencia = new Experiencia();
         List<Mejoras> upgrades = new ArrayList<>();
         obj = new ObjetoClicker("Null", experiencia, monedas, upgrades);
+        
+        //--------Experiencia y nivel
         
         label_minExp.setText(obj.getExp().getExpLevel()+"");
         label_maxExp.setText(obj.getExp().getExpNextLevel()+"");
         label_level.setText(obj.getExp().getLevel()+"");
         progress.setMinimum(obj.getExp().getExpLevel());
         progress.setMaximum(obj.getExp().getExpNextLevel());
+        
+        label_exp.setText(obj.getExp().getnExp()+"");
+        label_expClick.setText(obj.getExp().getnExpClick()+"");
+        
+        //--------Monedas
+        
+        label_coins.setText(""+obj.getMonedas().getCoins());
+        label_coinsClick.setText(""+obj.getMonedas().getCoinsClick());
+        
     }
 
     /**
@@ -48,14 +66,18 @@ public class Vista extends javax.swing.JFrame {
 
         panel_Generic = new javax.swing.JPanel();
         panel_Data = new javax.swing.JPanel();
-        panel_Data_left = new javax.swing.JPanel();
         label_coins = new javax.swing.JLabel();
-        panel_Data_mid = new javax.swing.JPanel();
-        label_minExp = new javax.swing.JLabel();
+        label_coins_image = new javax.swing.JLabel();
         progress = new javax.swing.JProgressBar();
-        label_maxExp = new javax.swing.JLabel();
         label_level = new javax.swing.JLabel();
-        panel_Data_right = new javax.swing.JPanel();
+        label_maxExp = new javax.swing.JLabel();
+        label_minExp = new javax.swing.JLabel();
+        label_exp = new javax.swing.JLabel();
+        label_exp_image = new javax.swing.JLabel();
+        label_coinsClick_image = new javax.swing.JLabel();
+        label_expClick = new javax.swing.JLabel();
+        label_expClick_image = new javax.swing.JLabel();
+        label_coinsClick = new javax.swing.JLabel();
         panel_Upgrades = new javax.swing.JPanel();
         panel_Game = new javax.swing.JPanel();
         panel_Clicker = new javax.swing.JPanel();
@@ -63,93 +85,120 @@ public class Vista extends javax.swing.JFrame {
         panel_Inventory = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clicker_PDOO");
 
         panel_Generic.setLayout(new java.awt.BorderLayout());
 
-        panel_Data.setBackground(new java.awt.Color(255, 230, 190));
-        panel_Data.setLayout(new java.awt.GridLayout(1, 3));
+        panel_Data.setBackground(new java.awt.Color(255, 255, 255));
+        panel_Data.setPreferredSize(new java.awt.Dimension(1014, 118));
 
-        panel_Data_left.setBackground(new java.awt.Color(255, 255, 255));
+        label_coins.setFont(new java.awt.Font("Unispace", 0, 20)); // NOI18N
+        label_coins.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_coins.setText("0");
+        label_coins.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        label_coins.setPreferredSize(new java.awt.Dimension(50, 16));
 
-        javax.swing.GroupLayout panel_Data_leftLayout = new javax.swing.GroupLayout(panel_Data_left);
-        panel_Data_left.setLayout(panel_Data_leftLayout);
-        panel_Data_leftLayout.setHorizontalGroup(
-            panel_Data_leftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_Data_leftLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(label_coins)
-                .addContainerGap(272, Short.MAX_VALUE))
-        );
-        panel_Data_leftLayout.setVerticalGroup(
-            panel_Data_leftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_Data_leftLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(label_coins)
-                .addContainerGap(69, Short.MAX_VALUE))
-        );
-
-        panel_Data.add(panel_Data_left);
-
-        panel_Data_mid.setBackground(new java.awt.Color(255, 255, 255));
-
-        label_minExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        label_minExp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        label_minExp.setText("0");
-
-        label_maxExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        label_maxExp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label_maxExp.setText("120");
+        label_coins_image.setText("Img coins");
 
         label_level.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         label_level.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_level.setText("0");
         label_level.setToolTipText("");
 
-        javax.swing.GroupLayout panel_Data_midLayout = new javax.swing.GroupLayout(panel_Data_mid);
-        panel_Data_mid.setLayout(panel_Data_midLayout);
-        panel_Data_midLayout.setHorizontalGroup(
-            panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_Data_midLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_Data_midLayout.createSequentialGroup()
-                        .addComponent(label_minExp, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+        label_maxExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        label_maxExp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_maxExp.setText("120");
+
+        label_minExp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        label_minExp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_minExp.setText("0");
+
+        label_exp.setFont(new java.awt.Font("Unispace", 0, 20)); // NOI18N
+        label_exp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_exp.setText("0");
+        label_exp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        label_exp.setPreferredSize(new java.awt.Dimension(50, 16));
+
+        label_exp_image.setText("Img exp");
+
+        label_coinsClick_image.setText("Img expClick");
+
+        label_expClick.setFont(new java.awt.Font("Unispace", 0, 20)); // NOI18N
+        label_expClick.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_expClick.setText("0");
+
+        label_expClick_image.setText("Img expClick");
+
+        label_coinsClick.setFont(new java.awt.Font("Unispace", 0, 20)); // NOI18N
+        label_coinsClick.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_coinsClick.setText("0");
+
+        javax.swing.GroupLayout panel_DataLayout = new javax.swing.GroupLayout(panel_Data);
+        panel_Data.setLayout(panel_DataLayout);
+        panel_DataLayout.setHorizontalGroup(
+            panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_DataLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(label_coins_image, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_DataLayout.createSequentialGroup()
+                        .addComponent(label_coinsClick_image, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(progress, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                        .addComponent(label_coinsClick, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
+                    .addComponent(label_coins, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label_level, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_DataLayout.createSequentialGroup()
+                        .addComponent(label_minExp, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(label_maxExp, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                    .addComponent(progress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_DataLayout.createSequentialGroup()
+                        .addComponent(label_exp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(panel_DataLayout.createSequentialGroup()
+                        .addComponent(label_expClick, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(label_expClick_image, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(label_exp_image, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panel_DataLayout.setVerticalGroup(
+            panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_DataLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_DataLayout.createSequentialGroup()
+                        .addComponent(label_coins_image, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_DataLayout.createSequentialGroup()
+                        .addComponent(label_exp_image, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_DataLayout.createSequentialGroup()
+                        .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(label_expClick, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(label_level, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label_coinsClick, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(label_expClick_image, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_coinsClick_image, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label_maxExp, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Data_midLayout.createSequentialGroup()
-                        .addComponent(label_level, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(progress, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                            .addComponent(label_coins, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                            .addComponent(label_exp, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                        .addGap(0, 0, 0)
+                        .addGroup(panel_DataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_maxExp)
+                            .addComponent(label_minExp))
                         .addContainerGap())))
         );
-        panel_Data_midLayout.setVerticalGroup(
-            panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Data_midLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(label_level)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_Data_midLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(progress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_minExp, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(label_maxExp, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addGap(34, 34, 34))
-        );
-
-        panel_Data.add(panel_Data_mid);
-
-        javax.swing.GroupLayout panel_Data_rightLayout = new javax.swing.GroupLayout(panel_Data_right);
-        panel_Data_right.setLayout(panel_Data_rightLayout);
-        panel_Data_rightLayout.setHorizontalGroup(
-            panel_Data_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 338, Short.MAX_VALUE)
-        );
-        panel_Data_rightLayout.setVerticalGroup(
-            panel_Data_rightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
-        );
-
-        panel_Data.add(panel_Data_right);
 
         panel_Generic.add(panel_Data, java.awt.BorderLayout.PAGE_START);
 
@@ -159,7 +208,7 @@ public class Vista extends javax.swing.JFrame {
         panel_Upgrades.setLayout(panel_UpgradesLayout);
         panel_UpgradesLayout.setHorizontalGroup(
             panel_UpgradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1016, Short.MAX_VALUE)
+            .addGap(0, 1167, Short.MAX_VALUE)
         );
         panel_UpgradesLayout.setVerticalGroup(
             panel_UpgradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,11 +266,11 @@ public class Vista extends javax.swing.JFrame {
         panel_Inventory.setLayout(panel_InventoryLayout);
         panel_InventoryLayout.setHorizontalGroup(
             panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
+            .addGap(0, 401, Short.MAX_VALUE)
         );
         panel_InventoryLayout.setVerticalGroup(
             panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGap(0, 539, Short.MAX_VALUE)
         );
 
         panel_Game.add(panel_Inventory);
@@ -237,12 +286,23 @@ public class Vista extends javax.swing.JFrame {
        
         obj.doClick();
         
+        //--------Experiencia y nivel
+        
         label_minExp.setText(""+obj.getExp().getExpLevel());
         label_maxExp.setText(""+obj.getExp().getExpNextLevel());
         label_level.setText(""+obj.getExp().getLevel());
         progress.setMinimum(obj.getExp().getExpLevel());
         progress.setMaximum(obj.getExp().getExpNextLevel());
         progress.setValue(obj.getExp().getnExp());
+        
+        label_exp.setText(obj.getExp().getnExp()+"");
+        label_expClick.setText(obj.getExp().getnExpClick()+"");
+        
+        
+        //--------Monedas
+        
+        label_coins.setText(""+obj.getMonedas().getCoins());
+        label_coinsClick.setText(""+obj.getMonedas().getCoinsClick());
         
         
     }//GEN-LAST:event_button_ClickerActionPerformed
@@ -288,14 +348,18 @@ public class Vista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Clicker;
     private javax.swing.JLabel label_coins;
+    private javax.swing.JLabel label_coinsClick;
+    private javax.swing.JLabel label_coinsClick_image;
+    private javax.swing.JLabel label_coins_image;
+    private javax.swing.JLabel label_exp;
+    private javax.swing.JLabel label_expClick;
+    private javax.swing.JLabel label_expClick_image;
+    private javax.swing.JLabel label_exp_image;
     private javax.swing.JLabel label_level;
     private javax.swing.JLabel label_maxExp;
     private javax.swing.JLabel label_minExp;
     private javax.swing.JPanel panel_Clicker;
     private javax.swing.JPanel panel_Data;
-    private javax.swing.JPanel panel_Data_left;
-    private javax.swing.JPanel panel_Data_mid;
-    private javax.swing.JPanel panel_Data_right;
     private javax.swing.JPanel panel_Game;
     private javax.swing.JPanel panel_Generic;
     private javax.swing.JPanel panel_Inventory;
@@ -316,6 +380,59 @@ public class Vista extends javax.swing.JFrame {
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
         
         button_Clicker.setIcon(icono);
+    }
+    
+    
+    /**
+     * Este método redimensiona la imagen de las monedas.
+     */
+    private void setjLabelCoins(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/amountCoins.png"));
+        int ancho = label_coins_image.getWidth();
+        int alto = label_coins_image.getHeight();
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        label_coins_image.setIcon(icono);
+    }
+    
+    /**
+     * Este método redimensiona la imagen de la experiencia.
+     */
+    private void setjLabelExp(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/experiencia.png"));
+        int ancho = label_exp_image.getWidth();
+        int alto = label_exp_image.getHeight();
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        label_exp_image.setIcon(icono);
+    }
+    
+    /**
+     * Este método redimensiona la imagen de la experiencia por clic.
+     */
+    private void setjLabelExpClick(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/expClick.png"));
+        int ancho = label_expClick_image.getWidth();
+        int alto = label_expClick_image.getHeight();
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        label_expClick_image.setIcon(icono);
+    }
+    
+    /**
+     * Este método redimensiona la imagen de las monedas por clic.
+     */
+    private void setjLabelCoinsClick(){
+        ImageIcon icon = new ImageIcon(getClass().getResource("/proyecto_pdoo/Resources/coinsClick.png"));
+        int ancho = label_coinsClick_image.getWidth();
+        int alto = label_coinsClick_image.getHeight();
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        label_coinsClick_image.setIcon(icono);
     }
     
     

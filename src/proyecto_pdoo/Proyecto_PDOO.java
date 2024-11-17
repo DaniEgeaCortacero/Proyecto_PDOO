@@ -21,10 +21,10 @@ public class Proyecto_PDOO {
         Mejoras_monedas upgrade_1 = new Mejoras_monedas("Mejora 1", "Añade dineros", "", 10, objeto, 1500);
         Mejoras_experiencia upgrade_2 = new Mejoras_experiencia("Mejora 2", "Añade experiencia", "", 10, objeto, 200);
         Mejoras_tiempo upgrade_3 = new Mejoras_tiempo(1, "Mejora 3", "Hace clics en 1 seg", "", 0, objeto);
-
-        upgrades.add(upgrade_1);
-        upgrades.add(upgrade_2);
-        upgrades.add(upgrade_3);
+        
+        upgrade_1.buyUpgrade();
+        upgrade_2.buyUpgrade();
+        upgrade_3.buyUpgrade();
 
 
         System.out.println(objeto);
