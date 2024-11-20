@@ -203,18 +203,8 @@ public class Vista extends javax.swing.JFrame {
         panel_Generic.add(panel_Data, java.awt.BorderLayout.PAGE_START);
 
         panel_Upgrades.setBackground(new java.awt.Color(51, 204, 255));
-
-        javax.swing.GroupLayout panel_UpgradesLayout = new javax.swing.GroupLayout(panel_Upgrades);
-        panel_Upgrades.setLayout(panel_UpgradesLayout);
-        panel_UpgradesLayout.setHorizontalGroup(
-            panel_UpgradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1167, Short.MAX_VALUE)
-        );
-        panel_UpgradesLayout.setVerticalGroup(
-            panel_UpgradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
+        panel_Upgrades.setMinimumSize(new java.awt.Dimension(1167, 100));
+        panel_Upgrades.setLayout(new java.awt.GridLayout(1, 4));
         panel_Generic.add(panel_Upgrades, java.awt.BorderLayout.PAGE_END);
 
         panel_Game.setBackground(new java.awt.Color(255, 255, 255));
@@ -270,7 +260,7 @@ public class Vista extends javax.swing.JFrame {
         );
         panel_InventoryLayout.setVerticalGroup(
             panel_InventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGap(0, 639, Short.MAX_VALUE)
         );
 
         panel_Game.add(panel_Inventory);
