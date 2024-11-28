@@ -3,19 +3,23 @@ package proyecto_pdoo.Components;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import proyecto_pdoo.*;
 
 /**
  *
  * @author forza
  */
 public class Mejoras_compra extends javax.swing.JPanel {
-
-    /**
-     * Creates new form Upgrades_buy
-     */
-    public Mejoras_compra() {
+    
+    Mejoras mejora;
+    JPanel panel;
+    
+    public Mejoras_compra(Mejoras mejora, JPanel data_panel) {
         initComponents();
-        
+        this.mejora = mejora;
+        this.panel = data_panel;
+        this.label_nombre.setText(mejora.getName() + " - " + mejora.getPrize());
+        this.label_descripcion.setText(mejora.getDescription());
     }
 
     /**
@@ -84,7 +88,8 @@ public class Mejoras_compra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_comprarActionPerformed
-        // TODO add your handling code here:
+        mejora.buyUpgrade();
+        panel.reloadData();
     }//GEN-LAST:event_boton_comprarActionPerformed
 
 

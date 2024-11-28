@@ -7,6 +7,7 @@ package proyecto_pdoo;
 public class Mejoras {
     protected String name, description, pathImage;
     protected int prize;
+    protected TipoMejoras tipo;
     protected ObjetoClicker obj;
 
 
@@ -16,7 +17,7 @@ public class Mejoras {
      * Constructor por defecto
      */
     public Mejoras(){
-        this("","","",0, null);
+        this("","","",0, null, null);
     }
 
     /**
@@ -27,7 +28,7 @@ public class Mejoras {
      * @param prize int
      * @param obj ObjetoClicker
      */
-    public Mejoras(String name, String description, String pathImage, int prize, ObjetoClicker obj) {
+    public Mejoras(String name, String description, String pathImage, int prize, TipoMejoras tipo, ObjetoClicker obj) {
         this.name = name;
         this.description = description;
         this.pathImage = pathImage;
@@ -40,7 +41,7 @@ public class Mejoras {
      * @param otro Mejoras
      */
     public Mejoras(Mejoras otro){
-        this(otro.name, otro.description, otro.pathImage, otro.prize, otro.obj);
+        this(otro.name, otro.description, otro.pathImage, otro.prize, otro.tipo, otro.obj);
     }
 
 

@@ -23,7 +23,7 @@ public class Mejoras_monedas extends Mejoras{
      * @param increaseCoins int
      */
     public Mejoras_monedas(String name, String description, String pathImage, int prize, ObjetoClicker obj, int increaseCoins) {
-        super(name, description, pathImage, prize, obj);
+        super(name, description, pathImage, prize, TipoMejoras.MEJORAS_MONEDAS, obj);
         this.increaseCoins = increaseCoins;
     }
 

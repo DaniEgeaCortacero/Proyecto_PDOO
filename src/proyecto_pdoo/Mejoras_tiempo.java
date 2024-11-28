@@ -34,7 +34,7 @@ public class Mejoras_tiempo extends Mejoras{
      * @param obj ObjetoClicker
      */
     public Mejoras_tiempo(int n_clicks, String name, String description, String pathImage, int prize, ObjetoClicker obj) {
-        super(name, description, pathImage, prize, obj);
+        super(name, description, pathImage, prize, TipoMejoras.MEJORAS_TIEMPO, obj);
         this.n_clicks = n_clicks;
         this.isPaused = false;
         timer = new Timer();

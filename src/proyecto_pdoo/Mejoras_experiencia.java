@@ -23,7 +23,7 @@ public class Mejoras_experiencia extends Mejoras{
      * @param increaseExp int
      */
     public Mejoras_experiencia(String name, String description, String pathImage, int prize, ObjetoClicker obj, int increaseExp) {
-        super(name, description, pathImage, prize, obj);
+        super(name, description, pathImage, prize, TipoMejoras.MEJORAS_EXPERIENCIA, obj);
         this.increaseExp = increaseExp;
     }
 

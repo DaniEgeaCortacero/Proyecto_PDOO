@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import proyecto_pdoo.Components.*;
 
 /**
  *
@@ -22,37 +23,17 @@ public class Vista extends javax.swing.JFrame {
     /**
      * Creates new form Vista
      */
-    public Vista() {
+    public Vista(ObjetoClicker obj) {
         initComponents();
+        this.obj = obj;
         
         setButtonClicker();
         setjLabelCoins();
         setjLabelExp();
         setjLabelExpClick();
         setjLabelCoinsClick();
-                
-        
-        Monedas monedas = new Monedas();
-        Experiencia experiencia = new Experiencia();
-        List<Mejoras> upgrades = new ArrayList<>();
-        obj = new ObjetoClicker("Null", experiencia, monedas, upgrades);
-        
-        //--------Experiencia y nivel
-        
-        label_minExp.setText(obj.getExp().getExpLevel()+"");
-        label_maxExp.setText(obj.getExp().getExpNextLevel()+"");
-        label_level.setText(obj.getExp().getLevel()+"");
-        progress.setMinimum(obj.getExp().getExpLevel());
-        progress.setMaximum(obj.getExp().getExpNextLevel());
-        
-        label_exp.setText(obj.getExp().getnExp()+"");
-        label_expClick.setText(obj.getExp().getnExpClick()+"");
-        
-        //--------Monedas
-        
-        label_coins.setText(""+obj.getMonedas().getCoins());
-        label_coinsClick.setText(""+obj.getMonedas().getCoinsClick());
-        
+        loadUpgrades();
+        reloadData();
     }
 
     /**
@@ -276,24 +257,8 @@ public class Vista extends javax.swing.JFrame {
        
         obj.doClick();
         
-        //--------Experiencia y nivel
-        
-        label_minExp.setText(""+obj.getExp().getExpLevel());
-        label_maxExp.setText(""+obj.getExp().getExpNextLevel());
-        label_level.setText(""+obj.getExp().getLevel());
-        progress.setMinimum(obj.getExp().getExpLevel());
-        progress.setMaximum(obj.getExp().getExpNextLevel());
+        reloadData();
         progress.setValue(obj.getExp().getnExp());
-        
-        label_exp.setText(obj.getExp().getnExp()+"");
-        label_expClick.setText(obj.getExp().getnExpClick()+"");
-        
-        
-        //--------Monedas
-        
-        label_coins.setText(""+obj.getMonedas().getCoins());
-        label_coinsClick.setText(""+obj.getMonedas().getCoinsClick());
-        
         
     }//GEN-LAST:event_button_ClickerActionPerformed
 
@@ -328,7 +293,7 @@ public class Vista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista().setVisible(true);
+                //new Vista().setVisible(true);
             }
         });
     }
@@ -426,4 +391,42 @@ public class Vista extends javax.swing.JFrame {
     }
     
     
+    /**
+     * Carga las mejoras en el panel Upgrades.
+     */
+    private void loadUpgrades(){
+        List<Mejoras> mejoras = obj.getMejoras();
+        for(Mejoras mejora : mejoras){
+            Mejoras_compra item = new Mejoras_compra(mejora, this.panel_Data);
+            this.panel_Upgrades.add(item);
+            item.setVisible(true);
+        }
+        this.panel_Upgrades.validate();
+        this.panel_Upgrades.repaint();
+        this.panel_Upgrades.setVisible(true);
+        this.validate();
+        this.repaint();
+    }
+    
+    /**
+     * Recarga los datos del panel datos.
+     */
+    private void reloadData(){
+        
+        //--------Experiencia y nivel
+        
+        label_minExp.setText(obj.getExp().getExpLevel()+"");
+        label_maxExp.setText(obj.getExp().getExpNextLevel()+"");
+        label_level.setText(obj.getExp().getLevel()+"");
+        progress.setMinimum(obj.getExp().getExpLevel());
+        progress.setMaximum(obj.getExp().getExpNextLevel());
+        
+        label_exp.setText(obj.getExp().getnExp()+"");
+        label_expClick.setText(obj.getExp().getnExpClick()+"");
+        
+        //--------Monedas
+        
+        label_coins.setText(""+obj.getMonedas().getCoins());
+        label_coinsClick.setText(""+obj.getMonedas().getCoinsClick());
+    }
 }
