@@ -3,6 +3,8 @@ package proyecto_pdoo.Components;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import proyecto_pdoo.Mejoras;
+import proyecto_pdoo.Vista;
 
 /**
  *
@@ -10,12 +12,16 @@ import javax.swing.JPanel;
  */
 public class Mejoras_tiempo_inventario extends javax.swing.JPanel {
 
+    private int precio;
+    
     /**
      * Creates new form Upgrades_buy
      */
-    public Mejoras_tiempo_inventario() {
+    public Mejoras_tiempo_inventario(String nombre, String descripcion, int precio) {
         initComponents();
-        
+        label_nombre.setText(nombre);
+        label_descripcion.setText(descripcion);
+        this.precio = precio;
     }
 
     /**

@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import proyecto_pdoo.Components.*;
 
 /**
@@ -397,7 +398,7 @@ public class Vista extends javax.swing.JFrame {
     private void loadUpgrades(){
         List<Mejoras> mejoras = obj.getMejoras();
         for(Mejoras mejora : mejoras){
-            Mejoras_compra item = new Mejoras_compra(mejora, this.panel_Data);
+            Mejoras_compra item = new Mejoras_compra(mejora, this);
             this.panel_Upgrades.add(item);
             item.setVisible(true);
         }
@@ -411,7 +412,7 @@ public class Vista extends javax.swing.JFrame {
     /**
      * Recarga los datos del panel datos.
      */
-    private void reloadData(){
+    public void reloadData(){ //Clase Vista
         
         //--------Experiencia y nivel
         
@@ -428,5 +429,12 @@ public class Vista extends javax.swing.JFrame {
         
         label_coins.setText(""+obj.getMonedas().getCoins());
         label_coinsClick.setText(""+obj.getMonedas().getCoinsClick());
+        
+        this.getGraphics();
+        this.repaint();
+    }
+    
+    public JPanel getPanelInventory(){
+        return this.panel_Inventory;
     }
 }

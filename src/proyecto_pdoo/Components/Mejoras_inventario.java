@@ -9,13 +9,17 @@ import javax.swing.JPanel;
  * @author forza
  */
 public class Mejoras_inventario extends javax.swing.JPanel {
+    
+    private int precio;
 
     /**
      * Creates new form Upgrades_buy
      */
-    public Mejoras_inventario() {
+    public Mejoras_inventario(String nombre, String descripcion, int precio) {
         initComponents();
-        
+        label_nombre.setText(nombre);
+        label_descripcion.setText(descripcion);
+        this.precio = precio;
     }
 
     /**

@@ -143,9 +143,15 @@ public class Monedas {
      * addCoins
      * Añade o quita monedas del total según el parámetro.
      * @param coins int
+     * @return boolean
      */
-    public void addCoins(int coins){
-        this.coins += coins;
+    public boolean addCoins(int coins){
+        int c = this.coins;
+        if(c+coins >= 0){
+            this.coins += coins;
+            return true;
+        }
+        return false;
     }
     
     //-------- Añadir monedas por clic

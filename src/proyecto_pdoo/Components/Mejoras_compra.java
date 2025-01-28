@@ -12,9 +12,9 @@ import proyecto_pdoo.*;
 public class Mejoras_compra extends javax.swing.JPanel {
     
     Mejoras mejora;
-    JPanel panel;
+    Vista panel;
     
-    public Mejoras_compra(Mejoras mejora, JPanel data_panel) {
+    public Mejoras_compra(Mejoras mejora, Vista data_panel) {
         initComponents();
         this.mejora = mejora;
         this.panel = data_panel;
@@ -88,8 +88,51 @@ public class Mejoras_compra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_comprarActionPerformed
-        mejora.buyUpgrade();
-        panel.reloadData();
+        if(mejora.buyUpgrade()){
+            if(mejora.getTipo().equals(TipoMejoras.MEJORAS_MONEDAS)){
+                Mejoras_inventario m = new Mejoras_inventario(label_nombre.getText(), label_descripcion.getText(), mejora.getPrize());
+                panel.getPanelInventory().add(m);
+                m.setVisible(true);
+                m.setSize(300,141);
+                panel.getPanelInventory().validate();
+                panel.getPanelInventory().setVisible(true);
+                panel.getPanelInventory().repaint();
+                
+                Mejoras_monedas mej = (Mejoras_monedas) mejora;
+                mej.addCoinsClick();
+                
+                panel.reloadData();
+            } else if(mejora.getTipo().equals(TipoMejoras.MEJORAS_EXPERIENCIA)){
+                Mejoras_inventario m = new Mejoras_inventario(label_nombre.getText(), label_descripcion.getText(), mejora.getPrize());
+                panel.getPanelInventory().add(m);
+                m.setVisible(true);
+                m.setSize(300,141);
+                panel.getPanelInventory().validate();
+                panel.getPanelInventory().setVisible(true);
+                panel.getPanelInventory().repaint();
+                
+                Mejoras_experiencia mej = (Mejoras_experiencia) mejora;
+                mej.addExpPerClic();
+                
+                panel.reloadData();
+            }
+            else if(mejora.getTipo().equals(TipoMejoras.MEJORAS_TIEMPO)){
+                Mejoras_tiempo_inventario m = new Mejoras_tiempo_inventario(label_nombre.getText(), label_descripcion.getText(), mejora.getPrize());
+                panel.getPanelInventory().add(m);
+                m.setVisible(true);
+                m.setSize(300,141);
+                panel.getPanelInventory().validate();
+                panel.getPanelInventory().setVisible(true);
+                panel.getPanelInventory().repaint();
+                
+                Mejoras_tiempo mej = (Mejoras_tiempo) mejora;
+                mej.autoClicks();
+                
+                panel.reloadData();
+            }
+        }else{
+            System.out.println("No tienes suficiente dinero");
+        }
     }//GEN-LAST:event_boton_comprarActionPerformed
 
 

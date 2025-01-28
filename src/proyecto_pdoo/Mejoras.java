@@ -33,6 +33,7 @@ public class Mejoras {
         this.description = description;
         this.pathImage = pathImage;
         this.prize = prize;
+        this.tipo = tipo;
         this.obj = obj;
     }
 
@@ -137,6 +138,17 @@ public class Mejoras {
         this.obj = obj;
     }
     
+    //-------- Tipo
+
+    public TipoMejoras getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoMejoras tipo) {
+        this.tipo = tipo;
+    }
+    
+    
     
     //----------------------------------- Funciones ---------------------------------------------//
     
@@ -145,10 +157,14 @@ public class Mejoras {
     /**
      * buyUpgrade()
      * Este método resta el precio de la mejora al total.
+     * @return boolean
      */
-    public void buyUpgrade(){
-        this.obj.getMonedas().addCoins(-prize);
-        this.obj.getMejoras().add(this);
+    public boolean buyUpgrade(){
+        if(this.obj.getMonedas().addCoins(-prize)){
+            this.obj.getMejoras().add(this);
+            return true;
+        }
+        return false;
     }
     
 
